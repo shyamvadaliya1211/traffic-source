@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="26px" viewBox="0 0 30 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="AMP-Messaging-Overview" transform="translate(-26.000000, -123.000000)" fill="#645151">
+            <path d="M56,132.219798 C56,131.219554 55.5003352,130.291083 54.6431793,129.790961 L41,123 L27.3568207,129.790961 C26.5714373,130.289254 26,131.219554 26,132.219798 L26,145.857491 C26,147.428715 27.2855053,148.714678 28.8571864,148.714678 L53.1428136,148.714678 C54.7144947,148.714678 56,147.428715 56,145.857491 L56,132.219798 Z M41,139.071559 L29.5246251,131.571559 L41,125.857186 L52.4753749,131.571559 L41,139.071559 Z" id="icon-mini-email"></path>
+        </g>
+    </g>
+</svg>
