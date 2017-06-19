@@ -92,10 +92,7 @@ dbMfgModule.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
         $stateProvider.state('home', {
             url: '/',
-            templateUrl: '/angular/views/dashboard.html',
-            resolve: {
-                loggedin: checkLoggedIn
-            }
+            templateUrl: '/angular/views/dashboard.html'
         });
 
         $urlRouterProvider.otherwise('/');

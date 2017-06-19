@@ -32,22 +32,17 @@ gulp.task('default', ['sass'], function() {
 
 
 //
-var third_party_css = [
+var css = [
     './public/libs/bootstrap/dist/css/bootstrap.min.css',
     'http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,600,300,700',
     './public/fonts/themify-icons/themify-icons.min.css',
     './public/fonts/weather-icons/css/weather-icons.min.css',
     './public/libs/font-awesome/css/font-awesome.min.css',
-];
-
-
-//
-var custom_css = [
     './public/css/sass/global.css'
 ];
 
 //
-var third_party_script = [
+var script = [
     './public/libs/jquery/dist/jquery.min.js',
     './public/libs/bootstrap/dist/js/bootstrap.min.js',
     './public/libs/angular/angular.min.js',
@@ -57,39 +52,30 @@ var third_party_script = [
     './public/libs/angular-mocks/angular-mocks.js',
     './public/libs/angular-cookies/angular-cookies.js',
     './public/libs/angular-animate/angular-animate.min.js',
+    './public/amp_angular/init.js',
+    './public/angular/routes/icMean.js',
+    './public/angular/services/icMean.js',
+    './public/angular/directives/icMean.js',
+    './public/angular/controllers/common.js',
 ];
 
-var custom_script = [
-    
-];
 
 
-gulp.task('third_party_css', function(){
-   gulp.src(third_party_css)
+
+
+gulp.task('css', function(){
+   gulp.src(css)
    .pipe(concat('final.min.css'))
    .pipe(minify())
    .pipe(gulp.dest('./public/minified/'));
 });
 
-gulp.task('custom_css', function(){
-   gulp.src(custom_css)
-   .pipe(concat('final.min.css'))
-   .pipe(minify())
-   .pipe(gulp.dest('./public/minified/'));
-});
-
-gulp.task('third_party_script', function(){
-   gulp.src(third_party_script)
+gulp.task('script', function(){
+   gulp.src(script)
    .pipe(concat('script.min.js'))
    .pipe(uglify())
    .pipe(gulp.dest('public/minified/'));
 });
 
-gulp.task('custom_script', function(){
-   gulp.src(custom_script)
-   .pipe(concat('script.min.js'))
-   .pipe(uglify())
-   .pipe(gulp.dest('public/minified/'));
-});
 
-gulp.task('compress',['third_party_css','custom_css', 'third_party_script', 'custom_script'],function(){});
+gulp.task('compress',['css','script'],function(){});
