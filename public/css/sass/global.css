@@ -2,3 +2,21 @@
   border-bottom: 5px solid #61ea1b;
   background-color: #202342;
   color: white; }
+
+.gb-footer {
+  height: 30px;
+  width: 100%;
+  background-color: #202342;
+  position: fixed;
+  bottom: 0px;
+  padding: 5px;
+  border-top: 2px solid #61ea1b;
+  color: white; }
+
+.view-content {
+  margin: 70px 16px 43px 16px; }
+
+.dashboard-cn {
+  padding-top: 350px;
+  text-align: center;
+  color: #676c9e; }

@@ -90,7 +90,7 @@ dbMfgModule.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
         $locationProvider.html5Mode({ enabled: false, requireBase: true }).hashPrefix('!');
 
 
-        $stateProvider.state('home', {
+        $stateProvider.state('/', {
             url: '/',
             templateUrl: '/angular/views/dashboard.html'
         });

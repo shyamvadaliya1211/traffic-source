@@ -52,7 +52,7 @@ var script = [
     './public/libs/angular-mocks/angular-mocks.js',
     './public/libs/angular-cookies/angular-cookies.js',
     './public/libs/angular-animate/angular-animate.min.js',
-    './public/amp_angular/init.js',
+    './public/angular/init.js',
     './public/angular/routes/icMean.js',
     './public/angular/services/icMean.js',
     './public/angular/directives/icMean.js',

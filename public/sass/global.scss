@@ -5,3 +5,24 @@
     background-color: $dark-blue;
     color: $white;
 }
+
+.gb-footer {
+	height: 30px;
+    width: 100%;
+    background-color: $dark-blue;
+    position: fixed;
+    bottom: 0px;
+    padding: 5px;
+    border-top: 2px solid $light-gray;
+    color: $white;
+}
+
+.view-content {
+	margin: 70px 16px 43px 16px;
+}
+
+.dashboard-cn {
+	padding-top: 350px;
+    text-align: center;
+    color: $text-color;
+}
