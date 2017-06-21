@@ -1,0 +1,20 @@
+.login-section {
+  display: table;
+  width: 100%; }
+  .login-section .centre-align {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle; }
+    .login-section .centre-align .login-cn {
+      max-width: 500px;
+      border: 1px solid rgba(61, 72, 55, 0.3);
+      background-color: rgba(55, 57, 72, 0.3);
+      display: inline-block;
+      vertical-align: top;
+      padding: 20px;
+      box-shadow: 0 0 99px 0 rgba(32, 35, 66, 0.6) inset; }
+  .login-section h2 {
+    margin: 0px;
+    border-bottom: 1px solid #46474e;
+    margin-bottom: 20px;
+    padding-bottom: 10px; }

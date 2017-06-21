@@ -95,6 +95,12 @@ dbMfgModule.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             templateUrl: '/angular/views/dashboard.html'
         });
 
+
+        $stateProvider.state('login', {
+            url: '/login',
+            templateUrl: '/angular/views/users/login.html'
+        });
+
         $urlRouterProvider.otherwise('/');
     }
 ]);

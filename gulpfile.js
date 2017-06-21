@@ -38,7 +38,8 @@ var css = [
     './public/fonts/themify-icons/themify-icons.min.css',
     './public/fonts/weather-icons/css/weather-icons.min.css',
     './public/libs/font-awesome/css/font-awesome.min.css',
-    './public/css/sass/global.css'
+    './public/css/sass/global.css',
+    './public/css/sass/user.css',
 ];
 
 //
@@ -56,7 +57,7 @@ var script = [
     './public/angular/routes/icMean.js',
     './public/angular/services/icMean.js',
     './public/angular/directives/icMean.js',
-    './public/angular/controllers/common.js',
+    './public/angular/controllers/common.js'
 ];
 
 

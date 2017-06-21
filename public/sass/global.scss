@@ -1,9 +1,33 @@
 @import "variable";
 
+body {
+    background: url("/images/bkg.jpg");
+    padding-top: 2em;
+    height: calc(100vh);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-size: cover;
+    color:$text-color;
+}
+
 .gb-header {
 	border-bottom: 5px solid $light-gray;
     background-color: $dark-blue;
     color: $white;
+}
+
+.gb-header-logo-text {
+	position: relative;
+    top: -80px;
+    left: 86px;
+}
+
+.gb-header-logo-img {
+	width: 80px;
+}
+
+.text-center {
+	text-align: center;
 }
 
 .gb-footer {
@@ -14,7 +38,7 @@
     bottom: 0px;
     padding: 5px;
     border-top: 2px solid $light-gray;
-    color: $white;
+    color: $text-color;
 }
 
 .view-content {
@@ -25,4 +49,22 @@
 	padding-top: 350px;
     text-align: center;
     color: $text-color;
+}
+
+.gb-button,
+.gb-button:hover,
+.gb-button:focus {
+	background-color: #323232;
+    border: 1px solid #6e8264;
+    color: $white;
+}
+
+input {
+	background-color: #303030 !important;
+	border: 1px solid #4e4c4c !important;
+}
+
+label{
+	color: white;
+	float: left;
 }

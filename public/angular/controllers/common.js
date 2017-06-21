@@ -9,8 +9,10 @@
 //     }
 // ]);
 
-dbMfgModule.controller('CommonController', ['$scope', '$http',
-    function($scope, $http) {
+dbMfgModule.controller('CommonController', ['$scope', '$http','$timeout',
+    function($scope, $http, $timeout) {
+
+
 
     }
 ]);

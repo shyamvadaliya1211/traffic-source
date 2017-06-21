@@ -1,7 +1,27 @@
+body {
+  background: url("/images/bkg.jpg");
+  padding-top: 2em;
+  height: calc(100vh);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-size: cover;
+  color: #676c9e; }
+
 .gb-header {
   border-bottom: 5px solid #61ea1b;
   background-color: #202342;
   color: white; }
+
+.gb-header-logo-text {
+  position: relative;
+  top: -80px;
+  left: 86px; }
+
+.gb-header-logo-img {
+  width: 80px; }
+
+.text-center {
+  text-align: center; }
 
 .gb-footer {
   height: 30px;
@@ -11,7 +31,7 @@
   bottom: 0px;
   padding: 5px;
   border-top: 2px solid #61ea1b;
-  color: white; }
+  color: #676c9e; }
 
 .view-content {
   margin: 70px 16px 43px 16px; }
@@ -20,3 +40,18 @@
   padding-top: 350px;
   text-align: center;
   color: #676c9e; }
+
+.gb-button,
+.gb-button:hover,
+.gb-button:focus {
+  background-color: #323232;
+  border: 1px solid #6e8264;
+  color: white; }
+
+input {
+  background-color: #303030 !important;
+  border: 1px solid #4e4c4c !important; }
+
+label {
+  color: white;
+  float: left; }
