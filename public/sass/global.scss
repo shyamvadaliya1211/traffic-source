@@ -11,34 +11,45 @@ body {
 }
 
 .gb-header {
-	border-bottom: 5px solid $light-gray;
-    background-color: $dark-blue;
+	border-bottom: 5px solid #456d2c;
     color: $white;
+    background-color: rgba(16, 40, 243, 0.3);
+    box-shadow: 0 0 99px 0 #171616 inset;
 }
 
 .gb-header-logo-text {
 	position: relative;
-    top: -80px;
-    left: 86px;
+    top: -32px;
+    left: 60px;
 }
 
 .gb-header-logo-img {
-	width: 80px;
+	width: 45px;
+    margin-top: -12px;
 }
 
 .text-center {
 	text-align: center;
 }
 
+.pointer {
+    cursor: pointer;
+}
+    
+.mt-5 {
+    margin-top: 5px;
+}
+
 .gb-footer {
 	height: 30px;
     width: 100%;
-    background-color: $dark-blue;
     position: fixed;
     bottom: 0px;
     padding: 5px;
-    border-top: 2px solid $light-gray;
-    color: $text-color;
+    color: $white;
+    border-top: 2px solid #59595a;
+    background-color: #c8c5ce;
+    box-shadow: 0 0 99px 0 #171616 inset;
 }
 
 .view-content {
@@ -53,18 +64,22 @@ body {
 
 .gb-button,
 .gb-button:hover,
-.gb-button:focus {
-	background-color: #323232;
-    border: 1px solid #6e8264;
-    color: $white;
+.gb-button:focus,
+.gb-button:active {
+    background-color: #323232!important;
+    border: 1px solid #4a4d6d!important;
+    color: $lable-color!important;
 }
 
 input {
 	background-color: #303030 !important;
 	border: 1px solid #4e4c4c !important;
+    height: 40px !important;
+    color: white !important;
 }
 
 label{
-	color: white;
+	color: $lable-color;
 	float: left;
+    font-weight: 400;
 }

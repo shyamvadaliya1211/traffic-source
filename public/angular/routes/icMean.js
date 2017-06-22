@@ -101,6 +101,21 @@ dbMfgModule.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             templateUrl: '/angular/views/users/login.html'
         });
 
+        $stateProvider.state('forgot-password', {
+            url: '/forgot-password',
+            templateUrl: '/angular/views/users/forgot-password.html'
+        });
+
+        $stateProvider.state('register', {
+            url: '/register',
+            templateUrl: '/angular/views/users/register.html'
+        });
+
+        $stateProvider.state('reset-password', {
+            url: '/reset-password',
+            templateUrl: '/angular/views/users/reset-password.html'
+        });
+
         $urlRouterProvider.otherwise('/');
     }
 ]);
