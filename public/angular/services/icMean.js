@@ -2,9 +2,6 @@
 
 
 
-
-
-
 /**
  *  Common Block which we need to keep globally
  */
@@ -171,14 +168,30 @@ dbMfgModule.factory('alertService', ['toastr', function(toastr) {
                 iconClass: 'toast-gray toast-gray-success',
                 closeButton: true,
                 toastClass: 'toast',
-                // closeHtml: '<img src="img/icon-x-small.png"/> '
-                closeHtml: '<i class="fa fa-times-circle close-tostr"></i> '
+                closeHtml: '<i class="fa fa-check close-tostr"></i> ',
+                progressBar: true,
+                templates: {
+                  toast: 'directives/toast/toast.html',
+                  progressbar: 'directives/progressbar/progressbar.html'
+                },
+                iconClasses: {
+                    success: 'toast-success'
+                }
             });
         } else {
             toastr.error(msg, 'Error', {
                 iconClass: 'toast-gray toast-gray-err',
                 closeButton: true,
-                closeHtml: '<i class="fa fa-times-circle close-tostr"></i> '
+                toastClass: 'toast',
+                closeHtml: '<i class="fa fa-exclamation-triangle close-tostr"></i> ',
+                progressBar: true,
+                templates: {
+                  toast: 'directives/toast/toast.html',
+                  progressbar: 'directives/progressbar/progressbar.html'
+                },
+                iconClasses: {
+                    warning: 'toast-warning'
+                }
             });
         }
 

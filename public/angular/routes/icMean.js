@@ -80,7 +80,7 @@ var checkLoggedOut = function($q, $timeout, $http, $location, $rootScope) {
 
 
 
-var dbMfgModule = angular.module('AMP', ['ngCookies','ngResource','ui.router','ngAnimate']);
+var dbMfgModule = angular.module('AMP', ['ngCookies','ngResource','ui.router','ngAnimate', 'toastr']);
 
 
 dbMfgModule.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',

@@ -83,3 +83,94 @@ label{
 	float: left;
     font-weight: 400;
 }
+
+#toast-container {
+   width: 100% !important;
+   top:0px !important;
+   right: 0px !important;
+   
+    .toast-gray-success {
+        width: 100% !important;
+        position: fixed !important;
+        bottom: 25px;
+        background-color: #456d2c;
+        padding: 6px 15px 6px 60px;
+        box-shadow: none !important;
+
+       .toast-close-button {
+            position: absolute;
+            left: 15px !important;
+            top: 11px!important;
+            font-size: 30px;
+       }
+
+        progress-bar {
+            background-color: #202449;
+        }
+    }
+
+    .toast-gray-err {
+        width: 100% !important;
+        position: fixed !important;
+        bottom: 25px;
+        background-color: rgba(255, 29, 5, 0.52);
+        padding: 6px 15px 6px 60px;
+        box-shadow: none !important;
+
+       .toast-close-button {
+            position: absolute;
+            left: 15px !important;
+            top: 11px!important;
+            font-size: 30px;
+       }
+
+        progress-bar {
+            background-color: #202449;
+        }   
+    }
+}
+
+
+
+.gb-modal {
+    .modal-header {
+        background-color: rgba(84, 87, 115, 0.3);
+        box-shadow: 0 0 99px 0 #171616 inset;
+        color: $white;
+        border-bottom: 5px solid #456d2c;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+    }
+
+    .modal-close {
+        color: white;
+        font-size: 27px;
+    }
+
+    .modal-body {
+        background-color: rgb(27, 27, 27);
+    }
+
+    .modal-footer {
+        border-top: 0px !important;
+        background-color: rgba(84, 87, 115, 0.3);
+        box-shadow: 0 0 99px 0 #171616 inset;
+        color: $white;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+
+    .modal-save-btn,
+    .modal-save-btn:hover,
+    .modal-save-btn:focus,
+    .modal-save-btn:active { 
+        background-color: #a09a9a!important;
+        border: 1px solid #a7a8af!important;
+        color: #0f1123!important;
+    }
+
+    .cancel-link {
+        margin-right: 15px;
+        color: #1b1b1b;
+    }
+}

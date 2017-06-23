@@ -38,6 +38,7 @@ var css = [
     './public/fonts/themify-icons/themify-icons.min.css',
     './public/fonts/weather-icons/css/weather-icons.min.css',
     './public/libs/font-awesome/css/font-awesome.min.css',
+    './public/libs/angular-toastr/dist/angular-toastr.css',
     './public/css/sass/global.css',
     './public/css/sass/user.css',
 ];
@@ -53,11 +54,13 @@ var script = [
     './public/libs/angular-mocks/angular-mocks.js',
     './public/libs/angular-cookies/angular-cookies.js',
     './public/libs/angular-animate/angular-animate.min.js',
+    './public/libs/angular-toastr/dist/angular-toastr.tpls.js',
     './public/angular/init.js',
     './public/angular/routes/icMean.js',
     './public/angular/services/icMean.js',
     './public/angular/directives/icMean.js',
-    './public/angular/controllers/common.js'
+    './public/angular/config/config.js',
+    './public/angular/controllers/common.js',
 ];
 
 
