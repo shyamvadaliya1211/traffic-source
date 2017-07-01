@@ -1,0 +1,39 @@
+<nav class="navbar navbar-inverse navbar-fixed-top gb-header">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        <a class="navbar-brand" href="#"> <img src="/images/Web-icon.png" class="gb-header-logo-img"> <span class="gb-header-logo-text">Traffic Source</span></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li class="dropdown">
+                    
+
+                    <div class="header-right-section dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+
+                        <div class=image-section>
+                            <img src="/images/dUser.svg">
+                        </div>
+
+                        <div class="user-name-section">
+                            <div class="f1-comman f1">{{gUser.loggedUser.firstName}} </div>  <div class="f1-comman"> {{gUser.loggedUser.lastName}}</div>
+                        </div>
+                        
+                    </div>
+
+                    <ul class="dropdown-menu ic-dropdown-menu">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="/user/logout">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+

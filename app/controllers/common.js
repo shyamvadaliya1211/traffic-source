@@ -202,9 +202,6 @@ exports.postAddData = function(req, res) {
 	if (!req.body.isChildInsert) {
 
 
-
-
-
 		var insertP = function() {
 
 			var commonFormData = new commonModel(req.body);
@@ -224,6 +221,8 @@ exports.postAddData = function(req, res) {
 				});
 			});
 		}
+
+		insertP();
 
 	}
 

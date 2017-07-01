@@ -15,6 +15,50 @@ body {
     color: $white;
     background-color: rgba(16, 40, 243, 0.3);
     box-shadow: 0 0 99px 0 #171616 inset;
+
+    .header-right-section {
+        padding: 0px 12px;
+        display: inline-block;
+        float: left;
+        cursor:pointer;
+        .image-section {
+            float: left;
+            margin-top:5px;
+            img{
+                width: 40px;
+            }
+        }
+        
+        .user-name-section {
+            margin-left: 10px;
+            margin-top: 15px;
+            float: left;
+
+            div::first-letter {
+                text-transform: uppercase;
+                float:left;
+            }
+
+            .f1 {
+                margin-right:5px;
+            }
+
+            .f1-comman {
+                float:left;
+            }
+        }
+    }
+
+    .ic-dropdown-menu {
+        background-color: rgba(49,60,52,.2);
+        margin-top: 4px !important;
+        li {
+            a {
+                padding:10px 20px !important;
+                color: #9d9d8f;
+            }
+        }
+    }
 }
 
 .gb-header-logo-text {
@@ -34,6 +78,11 @@ body {
 
 .pointer {
     cursor: pointer;
+}
+
+.error-text {
+    color:red;
+    font-size: 12px;
 }
     
 .mt-5 {

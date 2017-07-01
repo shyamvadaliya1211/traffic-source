@@ -47,6 +47,16 @@
         <script type="text/javascript" src="/minified/script.min.js"></script>
 
 
+        <script type="text/javascript" src="/angular/init.js"></script>
+        <script type="text/javascript" src="/angular/routes/icMean.js"></script>
+        <script type="text/javascript" src="/angular/services/icMean.js"></script>
+        <script type="text/javascript" src="/angular/directives/icMean.js"></script>
+        <script type="text/javascript" src="/angular/config/config.js"></script>
+        
+        <script type="text/javascript" src="/angular/controllers/common.js"></script>
+        <script type="text/javascript" src="/angular/controllers/user.js"></script>
+
+
         <script>
             var companyName = '{{companyName}}';
             var NODE_ENV = '{{env}}';
@@ -61,7 +71,8 @@
 
     <body id="app" data-ng-controller="CommonController">
 
-        <div data-ng-include="'/angular/views/include/header.html'"></div>
+        <div data-ng-if="!gUser.loggedUser" data-ng-include="'/angular/views/include/header.html'"></div>
+        <div data-ng-if="gUser.loggedUser" data-ng-include="'/angular/views/include/logged-header.html'"></div>
 
         <div id="body-content" class="view-content">
             <section>

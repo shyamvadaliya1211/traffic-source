@@ -236,11 +236,10 @@ exports.register = function(req, res, next) {
 
 
         if (result && result.length) {
-            res.status(400).json([{
-                msg: 'Email already taken',
-                param: 'email'
-            }]);
-
+            res.json({
+                status: 1,
+                message: 'Email already taken',
+            });
             return;
         }
 
@@ -250,14 +249,12 @@ exports.register = function(req, res, next) {
         user.provider = 'local';
 
         // because we set our user.provider to local our models/user.js validation will always be true
-        req.assert('first_name', 'You must enter a firstname').notEmpty();
-        req.assert('last_name', 'You must enter a lastname').notEmpty();
         req.assert('email', 'You must enter a valid email address').isEmail();
-        req.assert('password', 'Password too').len(8, 20);
+        req.assert('password', 'Password too short').len(8, 20);
 
         var errors = req.validationErrors();
         if (errors) {
-            return res.status(400).send(errors);
+            return res.json({status: false, message: errors[0].msg});
         }
 
         // Hard coded for now. Will address this with the user permissions system in v0.3.5
@@ -266,126 +263,12 @@ exports.register = function(req, res, next) {
         user.isEmailUpdate = false;
         user.save(function(err, result) {
 
-            //
-            if (err) {
-                switch (err.code) {
-                    case 11000:
-                    case 11001:
-                        res.status(400).json([{
-                            msg: 'Username already taken',
-                            param: 'username'
-                        }]);
-                        break;
-                    default:
-                        var modelErrors = [];
-
-                        if (err.errors) {
-
-                            for (var x in err.errors) {
-                                modelErrors.push({
-                                    param: x,
-                                    msg: err.errors[x].message,
-                                    value: err.errors[x].value
-                                });
-                            }
-
-                            res.status(400).json(modelErrors);
-                        }
-                }
-
-                return res.status(400);
-            }
-
             req.logIn(user, function(err) {
 
                 if (err) return next(err);
 
-                var activationEmailObj = {
-                    toEmail: user.email,
-                    bccEmail: user.email,
-                    dynamicFields: {
-                        first_name: user.first_name,
-                        last_name: user.last_name,
-                        email: user.email,
-                        activation_url: 'http://' + req.headers.host + '/#!/user/invitation-confirm-email/' + user._id
-                    }
-                }
-
-                // commonCtr.directSendEmail('5943b91d5c97d17dac1e5fa0', activationEmailObj, req.headers.host);
-                helperCTRL.sendSESEmail('5943b91d5c97d17dac1e5fa0', activationEmailObj);
-
-
-                req.body.companyDetails.userId = result._id;
-
-                var companyModel = mongoose.model('Company');
-                var commonFormData = new companyModel(req.body.companyDetails);
-
-                if (req.body.projectChk && req.body.invitationData) {
-                    commonFormData.save(function(err, result) {
-                        userModel.update({
-                            _id: result.userId
-                        }, {
-                            companyId: req.body.invitationData.companyId,
-                            isActivate: true
-                        }).exec(function(err, resultUser) {});
-                    });
-                } else {
-                    commonFormData.save(function(err, result) {
-                        userModel.update({
-                            _id: result.userId
-                        }, {
-                            companyId: result._id
-                        }).exec(function(err, resultUser) {});
-                    });
-                }
-
-
                 //
-                var projectTeamModel = mongoose.model('projectTeam');
-                if (req.body.projectChk && req.body.invitationData) {
-
-                    //Accept Entry
-                    projectTeamModel.findOne({
-                        _id: req.body.invitationData.projectTeamId
-                    }).exec(function(err, resultProTeam) {
-
-                        if (err || !resultProTeam) {
-                            return res.redirect('/');
-                        }
-
-                        resultProTeam.companyId = req.body.invitationData.companyId;
-                        resultProTeam.userId = result._id;
-                        resultProTeam.status = 1;
-
-                        resultProTeam.save(function(err, saveResult) {
-                            return res.redirect('/');
-                        });
-
-
-                    });
-                } else {
-
-                    //Reject Entry
-                    projectTeamModel.findOne({
-                        _id: req.body.invitationData.projectTeamId
-                    }).exec(function(err, resultProTeam) {
-
-                        if (err || !resultProTeam) {
-                            return res.redirect('/');
-                        }
-
-                        resultProTeam.companyId = req.body.invitationData.companyId;
-                        resultProTeam.userId = result._id;
-                        resultProTeam.status = 3;
-
-                        resultProTeam.save(function(err, saveResult) {
-                            return res.redirect('/');
-                        });
-
-                    });
-                }
-
-
+                res.json({status: true, data: user});
             });
 
             res.status(200);
@@ -452,91 +335,6 @@ exports._login = function(req, res) {
 
     //
     var userModel = mongoose.model('User');
-    var companyModel = mongoose.model('Company');
-    var projectTeamModel = mongoose.model('projectTeam');
-
-
-    /**
-     * 
-     */
-    var checkAuthPermission = function(user, cb) {
-
-        projectTeamModel.find({
-            userId: user._id.toString(),
-            companyId: user.companyId,
-            status: 1
-        }).exec(function(err, teamResult) {
-
-            if (err || !teamResult.length) {
-                cb([]);
-                return;
-            }
-
-            //
-            cb(teamResult);
-
-        });
-
-    }
-
-
-
-
-    /**
-     * 
-     */
-    var loginCheck = function(row, cb) {
-
-        userModel.findOne({
-            email: row.email,
-            // companyId: row.companyId,
-            isActivate: true,
-        }, function(err, user) {
-
-            //
-            user = JSON.parse(JSON.stringify(user));
-
-
-            /**
-             * 
-             */
-            checkAuthPermission(user, function(response) {
-
-
-                if (!response && !response.length) {
-                    console.log('Todo Not Permission');
-                }
-
-                //
-                var tmpPermissionData = [];
-
-                //
-                for (var cbRow in response) {
-                    tmpPermissionData.push({
-                        projectId: response[cbRow].projectId,
-                        modulePermission: response[cbRow].modulePermission
-                    });
-                }
-
-                //
-                user.authPermission = tmpPermissionData;
-                user.projectPermission = {};
-                user.isUserStatus = '1';
-
-                //
-                req.session.user = user;
-
-                //
-                cb({
-                    status: true,
-                    user: user
-                });
-
-            });
-
-        });
-    }
-
 
 
     //
@@ -544,12 +342,12 @@ exports._login = function(req, res) {
         email: req.body.email
     }, function(err, user) {
 
+        //
 
         if (user && user._id && !user.isActivate) {
             res.json({
-                msg: 'Sorry, Your account is not verified yet.',
-                status: false,
-                notVerified: true
+                message: 'Sorry, Your account is not verified yet.',
+                status: false
             });
             return;
         }
@@ -557,7 +355,7 @@ exports._login = function(req, res) {
         //
         if (err || !user) {
             res.json({
-                msg: 'User not found',
+                message: 'User not found',
                 status: false
             });
             return;
@@ -565,153 +363,22 @@ exports._login = function(req, res) {
 
         if (!user.authenticate(req.body.password)) {
             res.json({
-                msg: 'User name or password is invalid.',
+                message: 'User name or password is invalid.',
                 status: false
             });
             return;
         }
 
+        //
+        user = JSON.parse(JSON.stringify(user));
+        req.session.user = user;
 
         //
-        var isCompanyOwner = false;
-        if (user && user.companyId == req.session.companyId) {
-            isCompanyOwner = true;
-        }
+        res.json({
+            status: true,
+            data: user
+        });
 
-
-        //
-        // If login user is member of any company
-        if (req.session.companyId && req.session.companyId != '0' && !isCompanyOwner) {
-
-            projectTeamModel.findOne({
-                companyId: req.session.companyId,
-                email: req.body.email,
-                status: 1
-            }).exec(function(err, teamResult) {
-
-                //
-                if (err || !teamResult) {
-                    res.json({
-                        msg: 'Not a Valid User',
-                        status: false
-                    });
-                    return;
-                }
-
-
-                //
-                var domainName = req.headers.host.toString();
-                if(process.env.NODE_ENV == 'production' || process.env.NODE_ENV == 'stage') {
-                    domainName = req.headers.host.toString();
-                }
-
-                //
-                var comapnyDomain = '';
-                try {
-                    comapnyDomain = domainName.split('.')[0];
-                } catch(err) {
-                    console.log('err', err);
-                }
-
-                //
-                var companyModel = mongoose.model('Company');
-
-
-                //
-                companyModel.findOne({ subDomain: comapnyDomain }).exec(function(err, result) {
-
-                    if(result && result._id) {
-
-                        // Is Sub domain
-                        req.session.companyId = result._id;
-
-                        loginCheck({
-                            companyId: req.session.companyId,
-                            email: req.body.email
-                        }, function(response) {
-                            res.json(response);
-                        });
-                    } else {
-
-                        // Is Main domain
-                        req.session.companyId = teamResult.companyId;
-
-                        loginCheck({
-                            companyId: teamResult.companyId,
-                            email: req.body.email
-                        }, function(response) {
-                            res.json(response);
-                        });
-                    }
-                });
-            });
-
-
-        } else {
-
-
-            //
-            // if (user && user._id && !user.isActivate) {
-            //     res.json({
-            //         msg: 'Sorry, Your account is not verified yet.',
-            //         status: false,
-            //         notVerified: true
-            //     });
-            //     return;
-            // }
-
-            // //
-            // if (err || !user) {
-            //     res.json({
-            //         msg: 'User not found',
-            //         status: false
-            //     });
-            //     return;
-            // }
-
-            // if (!user.authenticate(req.body.password)) {
-            //     res.json({
-            //         msg: 'User name or password is invalid.',
-            //         status: false
-            //     });
-            //     return;
-            // }
-
-            //
-            req.session.companyId = user.companyId;
-
-            //
-            checkAuthPermission(user, function(response) {
-
-                user = JSON.parse(JSON.stringify(user));
-
-                if (!response && !response.length) {
-                    console.log('Todo Not Permission');
-                }
-
-                var tmpPermissionData = [];
-                for (var cbRow in response) {
-                    tmpPermissionData.push({
-                        projectId: response[cbRow].projectId,
-                        modulePermission: response[cbRow].modulePermission
-                    });
-                }
-
-                //
-                user.authPermission = tmpPermissionData;
-                user.projectPermission = {};
-                user.isUserStatus = '1';
-
-                req.session.user = user;
-
-                //
-                res.json({
-                    status: true,
-                    user: user
-                });
-
-            });
-        }
     });
 
 }

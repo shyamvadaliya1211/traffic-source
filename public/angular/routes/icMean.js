@@ -1,6 +1,7 @@
 /**
  *
  */
+
 var checkUserIsLoggedOrNot = function($q, $timeout, $http, $location, $rootScope, status) {
 
     // Initialize a new promise
@@ -12,36 +13,16 @@ var checkUserIsLoggedOrNot = function($q, $timeout, $http, $location, $rootScope
         $rootScope.gUser = {};
         $rootScope.loggedUser = user;
         $rootScope.gUser.loggedUser = user;
-        $rootScope.getCompanies();
-
-        if (user) {
-            $timeout(function() {
-                try {
-                    window.ampBot.show();
-                    window.ampBot.getUserInfo(user);
-                } catch(des) {
-
-                }
-            }, 10);
-        }
-
-        if(user == null || user == 'null') {
-            user = false;
-        }
 
         // Authenticated
         if (status && !user) {
             $timeout(deferred.reject);
-            // setTimeout(function(){
-            //     window.location = '/#!/';
-            // },100);
             return;
         }
 
         //
         if (!status && user) {
             $timeout(deferred.reject);
-            // window.location = '#!/company-preview';
         }
 
     }).error(function() {
@@ -92,7 +73,7 @@ dbMfgModule.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
         $stateProvider.state('/', {
             url: '/',
-            templateUrl: '/angular/views/dashboard.html'
+            templateUrl: '/angular/views/users/login.html'
         });
 
 
@@ -114,6 +95,16 @@ dbMfgModule.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
         $stateProvider.state('reset-password', {
             url: '/reset-password',
             templateUrl: '/angular/views/users/reset-password.html'
+        });
+
+
+
+        $stateProvider.state('/dashboard', {
+            url: '/dashboard',
+            templateUrl: '/angular/views/dashboard.html',
+            resolve: {
+                loggedin: checkLoggedIn
+            }
         });
 
         $urlRouterProvider.otherwise('/');

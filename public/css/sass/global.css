@@ -12,6 +12,33 @@ body {
   color: white;
   background-color: rgba(16, 40, 243, 0.3);
   box-shadow: 0 0 99px 0 #171616 inset; }
+  .gb-header .header-right-section {
+    padding: 0px 12px;
+    display: inline-block;
+    float: left;
+    cursor: pointer; }
+    .gb-header .header-right-section .image-section {
+      float: left;
+      margin-top: 5px; }
+      .gb-header .header-right-section .image-section img {
+        width: 40px; }
+    .gb-header .header-right-section .user-name-section {
+      margin-left: 10px;
+      margin-top: 15px;
+      float: left; }
+      .gb-header .header-right-section .user-name-section div::first-letter {
+        text-transform: uppercase;
+        float: left; }
+      .gb-header .header-right-section .user-name-section .f1 {
+        margin-right: 5px; }
+      .gb-header .header-right-section .user-name-section .f1-comman {
+        float: left; }
+  .gb-header .ic-dropdown-menu {
+    background-color: rgba(49, 60, 52, 0.2);
+    margin-top: 4px !important; }
+    .gb-header .ic-dropdown-menu li a {
+      padding: 10px 20px !important;
+      color: #9d9d8f; }
 
 .gb-header-logo-text {
   position: relative;
@@ -27,6 +54,10 @@ body {
 
 .pointer {
   cursor: pointer; }
+
+.error-text {
+  color: red;
+  font-size: 12px; }
 
 .mt-5 {
   margin-top: 5px; }

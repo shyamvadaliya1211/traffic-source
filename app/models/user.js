@@ -43,12 +43,12 @@ var escapeProperty = function(value) {
  */
 
 var UserSchema = new Schema({
-  first_name: {
+  firstName: {
     type: String,
     required: true,
     get: escapeProperty
   },
-  last_name: {
+  lastName: {
     type: String,
     required: true,
     get: escapeProperty
@@ -57,7 +57,6 @@ var UserSchema = new Schema({
     type: String,
     required: true,
     unique: false,
-    // Regexp to validate emails with more strict rules as added in tests/users.js which also conforms mostly with RFC2822 guide lines
     // match: [/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 'Please enter a valid email'],
     // validate: [validateUniqueEmail, 'E-mail address is already in-use']
   },
@@ -181,7 +180,7 @@ UserSchema.methods = {
   hashPassword: function(password) {
     if (!password || !this.salt) return '';
     var salt = new Buffer(this.salt, 'base64');
-    return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
+    return crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('base64');
   },
 
   /**

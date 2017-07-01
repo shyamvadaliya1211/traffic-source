@@ -55,14 +55,14 @@ var script = [
     './public/libs/angular-cookies/angular-cookies.js',
     './public/libs/angular-animate/angular-animate.min.js',
     './public/libs/angular-toastr/dist/angular-toastr.tpls.js',
-    './public/angular/init.js',
-    './public/angular/routes/icMean.js',
-    './public/angular/services/icMean.js',
-    './public/angular/directives/icMean.js',
-    './public/angular/config/config.js',
-    './public/angular/controllers/common.js',
 ];
-
+    // './public/angular/init.js',
+    // './public/angular/routes/icMean.js',
+    // './public/angular/services/icMean.js',
+    // './public/angular/directives/icMean.js',
+    // './public/angular/config/config.js',
+    // './public/angular/controllers/common.js',
+    // './public/angular/controllers/user.js',
 
 
 
