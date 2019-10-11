@@ -68,7 +68,7 @@
     "lodash": "^4.17.4",
     "method-override": "^2.3.5",
     "mongoose": "^4.4.7",
-    "morgan": "^1.7.0",
+    "morgan": "^1.9.1",
     "multiparty": "^4.1.2",
     "node-mandrill": "^1.0.1",
     "node-wit": "^4.2.0",
