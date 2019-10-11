@@ -66,7 +66,7 @@
     "html-to-text": "^3.2.0",
     "imagemin": "^3.2.0",
     "lodash": "^4.17.4",
-    "method-override": "^2.3.5",
+    "method-override": "^2.3.10",
     "mongoose": "^4.4.7",
     "morgan": "^1.7.0",
     "multiparty": "^4.1.2",
