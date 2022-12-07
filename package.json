@@ -40,7 +40,7 @@
     "decode-html": "^1.0.2",
     "dependable": "^0.2.5",
     "errorhandler": "^1.4.3",
-    "express": "^4.13.4",
+    "express": "^4.17.3",
     "express-fileupload": "0.0.4",
     "express-session": "^1.13.0",
     "express-validator": "^2.20.2",
